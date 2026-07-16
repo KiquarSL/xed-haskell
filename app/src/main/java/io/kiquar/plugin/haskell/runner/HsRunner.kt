@@ -8,9 +8,10 @@ import com.rk.runner.Runner
 import com.rk.file.BuiltinFileType
 import com.rk.exec.launchTerminal
 import com.rk.exec.TerminalCommand
+import io.kiquar.plugin.haskell.R
 
 class HsRunner(
-    val icon: Icon? = BuiltinFileType.ZIG.icon,
+    val icon: Icon? = Icon.ExternalResourceIcon(R.drawable.haskell, resources),
     val supportedExtensions: List<String> = listOf("hs"),
 ) : Runner() {
 

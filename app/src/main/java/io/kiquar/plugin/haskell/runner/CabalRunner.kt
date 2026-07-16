@@ -10,7 +10,7 @@ import com.rk.exec.launchTerminal
 import com.rk.exec.TerminalCommand
 
 class CabalRunner(
-    val icon: Icon? = BuiltinFileType.ZIG.icon,
+    val icon: Icon? = BuiltinFileType.PROPERTIES.icon,
     val supportedExtensions: List<String> = listOf("cabal"),
 ) : Runner() {
 

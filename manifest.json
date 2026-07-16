@@ -3,7 +3,7 @@
     "id": "io.kiquar.plugin.haskell",
     "name": "Haskell Support",
     "mainClass": "io.kiquar.plugin.haskell.Main",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Xed-Editor extension for the Haskell language.",
     "author": {
         "displayName": "KiquarSL",
