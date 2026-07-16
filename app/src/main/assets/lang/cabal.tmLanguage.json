@@ -10,7 +10,8 @@
     { "include": "#booleans" },
     { "include": "#strings" },
     { "include": "#numbers" },
-    { "include": "#conditionals" }
+    { "include": "#conditionals" },
+    { "include": "#operators" }
   ],
   "repository": {
     "comments": {
@@ -25,21 +26,7 @@
     "sections": {
       "patterns": [
         {
-          "match": "^(\\b(library|executable|test-suite|benchmark|flag|source-repository-package|common)\\b)\\s+(\\S+.*)$",
-          "captures": {
-            "1": { "name": "keyword.control.section.cabal" },
-            "2": { "name": "entity.name.section.cabal" }
-          }
-        },
-        {
-          "match": "^\\s*(\\b(autogen-modules|build-depends|build-tools|build-tool-depends|category|cc-options|c-sources|cpp-options|data-dir|data-files|default-language|default-extensions|description|exposed-modules|exposed:|extra-lib-dirs|extra-libraries|extra-source-files|extra-tmp-files|frameworks|ghc-options|haddock-options|hs-source-dir|hs-source-dirs|include-dirs|includes|install-includes|ld-options|libraries|license:|license-file|main-is|maintainer|module:|other-modules|other-languages|pkgconfig-depends|return-modules|scope:|synopsis|tested-with|type:|version:|website|x-includes|x-libraries|x-pkgconfig-dependencies)\\b)\\s*(:?)\\s*$",
-          "captures": {
-            "1": { "name": "keyword.other.field.cabal" },
-            "2": { "name": "punctuation.separator.key-value.cabal" }
-          }
-        },
-        {
-          "match": "^\\s*(\\b(legacy-)library\\b)\\s+(\\S+.*)$",
+          "match": "^(library|executable|test-suite|benchmark|flag|source-repository-package|common|legacy-library)\\b\\s*(.*)$",
           "captures": {
             "1": { "name": "keyword.control.section.cabal" },
             "2": { "name": "entity.name.section.cabal" }
@@ -50,7 +37,7 @@
     "field_names": {
       "patterns": [
         {
-          "match": "^\\s*(\\b([a-zA-Z][-a-zA-Z0-9]*)\\b)\\s*(:?)\\s*(?=\\S)",
+          "match": "^\\s*([a-zA-Z][-a-zA-Z0-9]*)\\s*(:)\\s*(?=\\S)",
           "captures": {
             "1": { "name": "keyword.other.field.cabal" },
             "2": { "name": "punctuation.separator.key-value.cabal" }
@@ -84,7 +71,7 @@
     "numbers": {
       "patterns": [
         {
-          "match": "\\b[0-9]+(\\.[0-9]+)*\\b",
+          "match": "\\b[0-9]+(\\.[0-9]+)?\\b",
           "name": "constant.numeric.cabal"
         }
       ]
@@ -92,11 +79,19 @@
     "conditionals": {
       "patterns": [
         {
-          "match": "\\b(if|else|then|impl|os|arch|flag|compiler|!")\\b",
+          "match": "\\b(if|else|then|impl|os|arch|compiler)\\b",
           "name": "keyword.control.conditional.cabal"
         },
         {
-          "match": "(&&|\\|\\|)",
+          "match": "\\bflag\\b",
+          "name": "keyword.other.flag.cabal"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "match": "&&|\\|\\||!",
           "name": "keyword.operator.logical.cabal"
         }
       ]
