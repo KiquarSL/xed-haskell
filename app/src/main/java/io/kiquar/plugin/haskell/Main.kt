@@ -56,10 +56,6 @@ class Main(context: ExtensionContext) : ExtensionAPI(context) {
     
     override fun onLoad() {}
 
-    override fun onUpdated() {
-        dispose()
-    }
-
     override fun onUninstalled() {
         dispose()
     }
