@@ -29,7 +29,7 @@ class CabalRunner(
             activity = activity,
             terminalCommand = TerminalCommand(
                 exe = "/bin/cabal",
-                args = arrayOf("build"),
+                args = arrayOf("run"),
                 id = id,
                 workingDir = workingDir,
             ),

@@ -29,7 +29,7 @@ class HsRunner(
             activity = activity,
             terminalCommand = TerminalCommand(
                 exe = "/bin/ghc",
-                args = arrayOf(fileObject.getAbsolutePath()),
+                args = arrayOf(fileObject.getAbsolutePath(), "&&", "./Main"),
                 id = id,
                 workingDir = workingDir,
             ),
