@@ -170,7 +170,7 @@ tasks.register<Zip>("createFinalZip") {
     outputs.upToDateWhen { false }
     description = "Archives the generated APK files into a single ZIP file."
     group = "build"
-
+doFirst {
     val apkFiles = layout.buildDirectory
         .dir("outputs/apk")
         .get()
@@ -212,4 +212,5 @@ tasks.register<Zip>("createFinalZip") {
     from(changelogFile) { into("") }
 
     destinationDirectory.set(File(rootDir, "output"))
+}
 }

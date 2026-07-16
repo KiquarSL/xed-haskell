@@ -28,7 +28,7 @@ class HsRunner(
         launchTerminal(
             activity = activity,
             terminalCommand = TerminalCommand(
-                exe = "/bin/runghc",
+                exe = "/bin/ghc",
                 args = arrayOf(fileObject.getAbsolutePath()),
                 id = id,
                 workingDir = workingDir,
