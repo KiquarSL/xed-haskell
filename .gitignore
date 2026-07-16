@@ -14,10 +14,8 @@ out/
 
 # Android
 local.properties
-*.apk
 *.dex
 *.class
-*.jar
 captures/
 .externalNativeBuild/
 .cxx/

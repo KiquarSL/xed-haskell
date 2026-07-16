@@ -32,8 +32,8 @@ jobs:
 
             - name: Compile Release
               run: |
-                  gradlew assembleRelease
-                  gradlew createFinalZip
+                  ./gradlew assembleRelease
+                  ./gradlew createFinalZip
 
             - name: Upload ZIP
               uses: actions/upload-artifact@v4
