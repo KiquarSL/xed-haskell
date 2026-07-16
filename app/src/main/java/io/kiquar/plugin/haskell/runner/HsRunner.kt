@@ -11,7 +11,7 @@ import com.rk.exec.TerminalCommand
 import io.kiquar.plugin.haskell.R
 
 class HsRunner(
-    val icon: Icon? = Icon.ExternalResourceIcon(R.drawable.haskell, resources),
+    val icon: Icon? = null,
     val supportedExtensions: List<String> = listOf("hs"),
 ) : Runner() {
 
