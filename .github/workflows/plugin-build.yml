@@ -1,0 +1,42 @@
+name: Extension Compile
+
+on:
+    schedule:
+        - cron: "0 */24 * * *"
+    push:
+        branches:
+            - main
+            - master
+    pull_request:
+
+permissions:
+    contents: read
+
+jobs:
+    build:
+        name: Extension Compile
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup JDK
+              uses: actions/setup-java@v4
+              with:
+                  distribution: temurin
+                  java-version: 21
+
+            - name: Make scripts executable
+              run: chmod +x ./gradlew
+
+            - name: Compile Release
+              run: |
+                  ./gradlew assembleRelease
+                  ./gradlew createFinalZip
+
+            - name: Upload ZIP
+              uses: actions/upload-artifact@v4
+              with:
+                  name: extension-build
+                  path: output/*.zip

@@ -1,0 +1,34 @@
+# Gradle
+.gradle/
+build/
+app/build
+
+# IDE
+.idea
+*.iml
+*.iws
+*.ipr
+out/
+.vscode
+.androidide
+
+# Android
+local.properties
+*.apk
+*.dex
+*.class
+*.jar
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Kotlin
+.kotlin
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Xed-Editor specific
+/output
+app/libs/sdk.jar

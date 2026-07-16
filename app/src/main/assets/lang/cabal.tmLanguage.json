@@ -1,0 +1,105 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "version": "0.1.0",
+  "name": "Cabal",
+  "scopeName": "source.cabal",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#sections" },
+    { "include": "#field_names" },
+    { "include": "#booleans" },
+    { "include": "#strings" },
+    { "include": "#numbers" },
+    { "include": "#conditionals" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "begin": "--",
+          "end": "$",
+          "name": "comment.line.double-dash.cabal"
+        }
+      ]
+    },
+    "sections": {
+      "patterns": [
+        {
+          "match": "^(\\b(library|executable|test-suite|benchmark|flag|source-repository-package|common)\\b)\\s+(\\S+.*)$",
+          "captures": {
+            "1": { "name": "keyword.control.section.cabal" },
+            "2": { "name": "entity.name.section.cabal" }
+          }
+        },
+        {
+          "match": "^\\s*(\\b(autogen-modules|build-depends|build-tools|build-tool-depends|category|cc-options|c-sources|cpp-options|data-dir|data-files|default-language|default-extensions|description|exposed-modules|exposed:|extra-lib-dirs|extra-libraries|extra-source-files|extra-tmp-files|frameworks|ghc-options|haddock-options|hs-source-dir|hs-source-dirs|include-dirs|includes|install-includes|ld-options|libraries|license:|license-file|main-is|maintainer|module:|other-modules|other-languages|pkgconfig-depends|return-modules|scope:|synopsis|tested-with|type:|version:|website|x-includes|x-libraries|x-pkgconfig-dependencies)\\b)\\s*(:?)\\s*$",
+          "captures": {
+            "1": { "name": "keyword.other.field.cabal" },
+            "2": { "name": "punctuation.separator.key-value.cabal" }
+          }
+        },
+        {
+          "match": "^\\s*(\\b(legacy-)library\\b)\\s+(\\S+.*)$",
+          "captures": {
+            "1": { "name": "keyword.control.section.cabal" },
+            "2": { "name": "entity.name.section.cabal" }
+          }
+        }
+      ]
+    },
+    "field_names": {
+      "patterns": [
+        {
+          "match": "^\\s*(\\b([a-zA-Z][-a-zA-Z0-9]*)\\b)\\s*(:?)\\s*(?=\\S)",
+          "captures": {
+            "1": { "name": "keyword.other.field.cabal" },
+            "2": { "name": "punctuation.separator.key-value.cabal" }
+          }
+        }
+      ]
+    },
+    "booleans": {
+      "patterns": [
+        {
+          "match": "\\b(True|False)\\b",
+          "name": "constant.language.boolean.cabal"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "begin": "\"",
+          "end": "\"",
+          "name": "string.quoted.double.cabal",
+          "patterns": [
+            {
+              "match": "\\\\.",
+              "name": "constant.character.escape.cabal"
+            }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "match": "\\b[0-9]+(\\.[0-9]+)*\\b",
+          "name": "constant.numeric.cabal"
+        }
+      ]
+    },
+    "conditionals": {
+      "patterns": [
+        {
+          "match": "\\b(if|else|then|impl|os|arch|flag|compiler|!")\\b",
+          "name": "keyword.control.conditional.cabal"
+        },
+        {
+          "match": "(&&|\\|\\|)",
+          "name": "keyword.operator.logical.cabal"
+        }
+      ]
+    }
+  }
+}

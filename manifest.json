@@ -1,0 +1,17 @@
+{
+    "$schema": "schema/schema.json",
+    "id": "io.kiquar.plugin.haskell",
+    "name": "Haskell Support",
+    "mainClass": "io.kiquar.plugin.haskell.Main",
+    "version": "0.1.0",
+    "description": "Xed-Editor extension for the Haskell language.",
+    "author": {
+        "displayName": "KiquarSL",
+        "github": "KiquarSL"
+    },
+    "license": "MIT",
+    "tags": ["haskell", "hs", "cabal", "functional", "highlighting", "runner"],
+    "minAppVersion": 95,
+    "maxAppVersion": null,
+    "repository": "https://github.com/KiquarSL/xed-haskell"
+}
