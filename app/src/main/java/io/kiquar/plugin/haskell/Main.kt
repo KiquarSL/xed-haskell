@@ -1,9 +1,17 @@
 package io.kiquar.plugin.haskell
 
+import android.app.Activity
+import android.os.Bundle
 import androidx.annotation.Keep
 import com.rk.extension.ExtensionAPI
 import com.rk.extension.ExtensionContext
-import com.rk.utils.toast
+import com.rk.file.FileTypeManager
+import com.rk.runner.RunnerManager
+import io.github.rosemoe.sora.langs.textmate.registry.FileProviderRegistry
+import io.github.rosemoe.sora.langs.textmate.registry.GrammarRegistry
+import io.github.rosemoe.sora.langs.textmate.registry.provider.AssetsFileResolver
+import io.kiquar.plugin.haskell.runner.HsRunner
+import io.kiquar.plugin.haskell.runner.CabalRunner
 
 @Keep
 @Suppress("unused")
