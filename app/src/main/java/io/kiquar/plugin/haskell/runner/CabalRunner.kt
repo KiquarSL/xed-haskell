@@ -11,7 +11,6 @@ import com.rk.exec.TerminalCommand
 
 class CabalRunner(
     val icon: Icon? = BuiltinFileType.PROPERTIES.icon,
-    val supportedExtensions: List<String> = listOf("cabal"),
 ) : Runner() {
 
     override val id = "haskell.run.cabal"
@@ -19,11 +18,11 @@ class CabalRunner(
 
     override fun getIcon(context: Context) = icon
 
-    override fun matcher(fileObject: FileObject): Boolean {
-        return supportedExtensions.contains(fileObject.getExtension())
+    fun matcher(fileObject: FileObject): Boolean {
+        return fileObject.getExtension() == "cabal"
     }
 
-    override suspend fun run(activity: Activity, fileObject: FileObject) {
+    suspend fun run(activity: Activity, fileObject: FileObject) {
         val workingDir = fileObject.getParentFile()?.getAbsolutePath()
         launchTerminal(
             activity = activity,
@@ -36,7 +35,7 @@ class CabalRunner(
         )
     }
 
-    override suspend fun isRunning() = false
+    override suspend fun isRunning(): Boolean = false
 
     override suspend fun stop() {}
 }

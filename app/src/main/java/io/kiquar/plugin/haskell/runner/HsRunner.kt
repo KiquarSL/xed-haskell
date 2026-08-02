@@ -8,23 +8,21 @@ import com.rk.runner.Runner
 import com.rk.file.BuiltinFileType
 import com.rk.exec.launchTerminal
 import com.rk.exec.TerminalCommand
-import io.kiquar.plugin.haskell.R
 
 class HsRunner(
     val icon: Icon? = null,
-    val supportedExtensions: List<String> = listOf("hs"),
 ) : Runner() {
 
     override val id = "haskell.run"
-    override val label = "Run Haskell"
+    override val label = "Run Haskell File"
 
     override fun getIcon(context: Context) = icon
 
-    override fun matcher(fileObject: FileObject): Boolean {
-        return supportedExtensions.contains(fileObject.getExtension())
+    fun matcher(fileObject: FileObject): Boolean {
+        return fileObject.getExtension() == "hs"
     }
 
-    override suspend fun run(activity: Activity, fileObject: FileObject) {
+    suspend fun run(activity: Activity, fileObject: FileObject) {
         val workingDir = fileObject.getParentFile()?.getAbsolutePath()
         launchTerminal(
             activity = activity,
@@ -37,7 +35,7 @@ class HsRunner(
         )
     }
 
-    override suspend fun isRunning() = false
+    override suspend fun isRunning(): Boolean = false
 
     override suspend fun stop() {}
 }
