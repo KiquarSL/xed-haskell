@@ -1,0 +1,16 @@
+{
+  "languages": [
+    {
+      "grammar": "lang/hs.tmLanguage.json",
+      "name": "Haskell",
+      "scopeName": "source.haskell",
+      "languageConfiguration": "lang/haskell-config.json"
+    },
+    {
+      "grammar": "lang/cabal.tmLanguage.json",
+      "name": "Cabal",
+      "scopeName": "source.cabal",
+      "languageConfiguration": "lang/cabal-config.json"
+    }
+  ]
+}

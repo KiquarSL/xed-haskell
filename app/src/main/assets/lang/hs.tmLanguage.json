@@ -1,0 +1,311 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "version": "0.1.0",
+  "name": "Haskell",
+  "scopeName": "source.haskell",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#pragmas" },
+    { "include": "#keywords" },
+    { "include": "#type_declarations" },
+    { "include": "#data_declarations" },
+    { "include": "#type_synonyms" },
+    { "include": "#newtype_declarations" },
+    { "include": "#class_declarations" },
+    { "include": "#instance_declarations" },
+    { "include": "#module_declarations" },
+    { "include": "#import_declarations" },
+    { "include": "#where_clauses" },
+    { "include": "#let_expressions" },
+    { "include": "#do_expressions" },
+    { "include": "#if_expressions" },
+    { "include": "#case_expressions" },
+    { "include": "#lambda_expressions" },
+    { "include": "#function_bindings" },
+    { "include": "#pattern_matching" },
+    { "include": "#type_signatures" },
+    { "include": "#strings" },
+    { "include": "#char_literals" },
+    { "include": "#numbers" },
+    { "include": "#operators" },
+    { "include": "#variables" },
+    { "include": "#constructors" },
+    { "include": "#types" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "begin": "\\{\\-",
+          "end": "\\-\\}",
+          "name": "comment.block.haskell",
+          "patterns": [
+            { "include": "#comments" }
+          ]
+        },
+        {
+          "begin": "--",
+          "end": "$",
+          "name": "comment.line.double-dash.haskell"
+        }
+      ]
+    },
+    "pragmas": {
+      "patterns": [
+        {
+          "begin": "\\{-#",
+          "end": "#-\\}",
+          "name": "meta.preprocessor.haskell",
+          "patterns": [
+            {
+              "match": "\\b(language|options_ghc|options_haddock|include|ann|inline|noinline| SCC| UNPACK| MODULE| WARNING| DEPRECATED| MINIMAL| OVERLAPPING| OVERLAPPABLE| OVERLAPS| INCOHERENT| SPECIALIZE| SOURCE| RULES| LINE| COLUMN)\\b",
+              "name": "keyword.other.pragma.haskell"
+            }
+          ]
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "match": "\\b(case|class|data|default|deriving|do|else|forall|foreign|hiding|if|import|in|infix|infixl|infixr|instance|let|module|newtype|of|qualified|then|type|where)\\b",
+          "name": "keyword.control.haskell"
+        }
+      ]
+    },
+    "type_declarations": {
+      "match": "\\b(data|newtype|type)\\s+([A-Z][A-Za-z0-9_]*)",
+      "captures": {
+        "1": { "name": "keyword.declaration.haskell" },
+        "2": { "name": "entity.name.type.haskell" }
+      }
+    },
+    "data_declarations": {
+      "match": "\\bdata\\s+([A-Z][A-Za-z0-9_]*)",
+      "captures": {
+        "1": { "name": "entity.name.type.haskell" }
+      }
+    },
+    "type_synonyms": {
+      "match": "\\btype\\s+([A-Z][A-Za-z0-9_]*)",
+      "captures": {
+        "1": { "name": "entity.name.type.haskell" }
+      }
+    },
+    "newtype_declarations": {
+      "match": "\\bnewtype\\s+([A-Z][A-Za-z0-9_]*)",
+      "captures": {
+        "1": { "name": "entity.name.type.haskell" }
+      }
+    },
+    "class_declarations": {
+      "match": "\\bclass\\s+(?:.*\\bwhere\\s+)?([A-Z][A-Za-z0-9_]*)",
+      "captures": {
+        "1": { "name": "entity.name.type.class.haskell" }
+      }
+    },
+    "instance_declarations": {
+      "match": "\\binstance\\s+(?:.*\\bwhere\\s+)?",
+      "name": "keyword.declaration.instance.haskell"
+    },
+    "module_declarations": {
+      "match": "\\bmodule\\s+([A-Z][A-Za-z0-9_.]*)",
+      "captures": {
+        "1": { "name": "entity.name.type.module.haskell" }
+      }
+    },
+    "import_declarations": {
+      "match": "\\bimport\\s+(?:qualified\\s+)?([A-Z][A-Za-z0-9_.]*)",
+      "captures": {
+        "1": { "name": "entity.name.type.module.haskell" }
+      }
+    },
+    "where_clauses": {
+      "match": "\\bwhere\\b",
+      "name": "keyword.control.where.haskell"
+    },
+    "let_expressions": {
+      "match": "\\blet\\b",
+      "name": "keyword.control.let.haskell"
+    },
+    "do_expressions": {
+      "match": "\\bdo\\b",
+      "name": "keyword.control.do.haskell"
+    },
+    "if_expressions": {
+      "patterns": [
+        {
+          "match": "\\bif\\b",
+          "name": "keyword.control.if.haskell"
+        },
+        {
+          "match": "\\bthen\\b",
+          "name": "keyword.control.then.haskell"
+        },
+        {
+          "match": "\\belse\\b",
+          "name": "keyword.control.else.haskell"
+        }
+      ]
+    },
+    "case_expressions": {
+      "match": "\\bcase\\s+",
+      "name": "keyword.control.case.haskell"
+    },
+    "lambda_expressions": {
+      "match": "\\\\",
+      "name": "keyword.operator.lambda.haskell"
+    },
+    "function_bindings": {
+      "match": "^([a-z][A-Za-z0-9_']*)",
+      "captures": {
+        "1": { "name": "entity.name.function.haskell" }
+      }
+    },
+    "pattern_matching": {
+      "patterns": [
+        {
+          "match": "\\b_\\b",
+          "name": "variable.language.wildcard.haskell"
+        },
+        {
+          "match": "\\b(True|False)\\b",
+          "name": "constant.language.boolean.haskell"
+        },
+        {
+          "match": "\\b(Nothing|Just|Left|Right)\\b",
+          "name": "support.constant.data.haskell"
+        }
+      ]
+    },
+    "type_signatures": {
+      "match": "([a-z][A-Za-z0-9_']*)\\s*::",
+      "captures": {
+        "1": { "name": "entity.name.function.haskell" }
+      }
+    },
+    "strings": {
+      "patterns": [
+        {
+          "begin": "\"\"\"",
+          "end": "\"\"\"",
+          "name": "string.quoted.triple.haskell"
+        },
+        {
+          "begin": "\"",
+          "end": "\"",
+          "name": "string.quoted.double.haskell",
+          "patterns": [
+            {
+              "match": "\\\\(\\\\|[abfnrtv]|'|\")",
+              "name": "constant.character.escape.haskell"
+            },
+            {
+              "match": "\\\\&",
+              "name": "constant.character.escape.null.haskell"
+            },
+            {
+              "match": "\\\\N\\{[A-Z][A-Za-z0-9_ ]*\\}",
+              "name": "constant.character.escape.unicode.haskell"
+            },
+            {
+              "match": "\\\\o[0-7]+|\\\\x[0-9a-fA-F]+|\\\\[0-9]+",
+              "name": "constant.character.escape.octal.hex.haskell"
+            }
+          ]
+        },
+        {
+          "begin": "'",
+          "end": "'",
+          "name": "string.quoted.single.haskell",
+          "patterns": [
+            {
+              "match": "\\\\(\\\\|[abfnrtv]|'|\")",
+              "name": "constant.character.escape.haskell"
+            },
+            {
+              "match": "\\\\&",
+              "name": "constant.character.escape.null.haskell"
+            },
+            {
+              "match": "\\\\N\\{[A-Z][A-Za-z0-9_ ]*\\}",
+              "name": "constant.character.escape.unicode.haskell"
+            },
+            {
+              "match": "\\\\o[0-7]+|\\\\x[0-9a-fA-F]+|\\\\[0-9]+",
+              "name": "constant.character.escape.octal.hex.haskell"
+            }
+          ]
+        }
+      ]
+    },
+    "char_literals": {
+      "match": "'\\\\.'|'[^'\\\\]'",
+      "name": "constant.character.haskell"
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "match": "\\b[0-9]+\\.[0-9]+([eE][+-]?[0-9]+)?\\b",
+          "name": "constant.numeric.float.haskell"
+        },
+        {
+          "match": "\\b0[xX][0-9a-fA-F]+\\b",
+          "name": "constant.numeric.hex.haskell"
+        },
+        {
+          "match": "\\b0[oO][0-7]+\\b",
+          "name": "constant.numeric.octal.haskell"
+        },
+        {
+          "match": "\\b0[bB][01]+\\b",
+          "name": "constant.numeric.binary.haskell"
+        },
+        {
+          "match": "\\b[0-9]+\\b",
+          "name": "constant.numeric.integer.haskell"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "match": "[:!#$%&*+./<=>?@\\\\^|~-]+",
+          "name": "keyword.operator.haskell"
+        },
+        {
+          "match": "\\b(mappend|mconcat|mempty|mzero|mplus|return|pure|fmap|<$>|<*>|<*>|>>=|>>|pure|return|fmap|<$>)\\b",
+          "name": "keyword.operator.monad.haskell"
+        }
+      ]
+    },
+    "variables": {
+      "patterns": [
+        {
+          "match": "\\b[a-z][A-Za-z0-9_']*\\b",
+          "name": "variable.other.haskell"
+        }
+      ]
+    },
+    "constructors": {
+      "patterns": [
+        {
+          "match": "\\b[A-Z][A-Za-z0-9_']*\\b",
+          "name": "entity.name.tag.constructor.haskell"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "match": "\\b(Int|Integer|Float|Double|Bool|Char|String|Maybe|Either|IO|Ordering|Ratio|Complex)\\b",
+          "name": "support.type.haskell"
+        },
+        {
+          "match": "\\b(Bool|Char|Int|Float|Double|IO|Either|Maybe|Ordering|ReadS|ShowS|String|Addr#|StablePtr#|StgMutVar#|IORef#|MutVar#|TVar#|STRep|ST|STRep|STret|State|State#|IORep|IORepBase)\\b",
+          "name": "support.type.builtin.haskell"
+        }
+      ]
+    }
+  }
+}
