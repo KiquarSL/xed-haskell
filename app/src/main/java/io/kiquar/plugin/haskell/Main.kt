@@ -33,7 +33,7 @@ class Main(context: ExtensionContext) : ExtensionAPI(context) {
     private fun loadLanguages() {
         val fileProviderRegistry = FileProviderRegistry.getInstance()
         fileResolver = AssetsFileResolver(context.assets)
-        fileProviderRegistry.addFileProvider(it)
+        fileProviderRegistry.addFileProvider(fileResolver)
 
         val grammarRegistry = GrammarRegistry.getInstance()
         grammarRegistry.loadGrammars("languages.json")
