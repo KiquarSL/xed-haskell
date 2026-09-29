@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "io.kiquar.pkugin.haskell"
+    namespace = "io.kiquar.plugin.haskell"
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "io.kiquar.pkugin.haskell"
+        applicationId = "io.kiquar.plugin.haskell"
         minSdk = 26
         targetSdk = 37
         versionCode = 1
