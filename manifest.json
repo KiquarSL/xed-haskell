@@ -3,7 +3,8 @@
   "id": "io.kiquar.plugin.haskell",
   "name": "Heskell Support",
   "mainClass": "io.kiquar.plugin.haskell.Main",
-  "version": "0.2.0",
+  "version": "0.3.0",
+  "type": "extension",
   "description": "Add support for Haskell language and dev-tools",
   "author": {
     "displayName": "KiquarSL",
@@ -11,5 +12,5 @@
   },
   "tags": ["haskell", "hs", "cabal", "functional", "highlighting", "runner"],
   "minAppVersion": 95,
-  "repository": "https:\/\/github.com\/KiquarSL\/xed-haskell"
+  "repository": "https://github.com/KiquarSL/xed-haskell"
 }

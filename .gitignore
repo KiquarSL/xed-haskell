@@ -16,4 +16,3 @@ output/**
 .cxx
 local.properties
 .androidide
-workspace.json

@@ -1,7 +1,5 @@
 package io.kiquar.plugin.haskell
 
-import android.app.Activity
-import android.os.Bundle
 import androidx.annotation.Keep
 import com.rk.extension.ExtensionAPI
 import com.rk.extension.ExtensionContext
@@ -16,59 +14,53 @@ import io.kiquar.plugin.haskell.runner.CabalRunner
 @Keep
 @Suppress("unused")
 class Main(context: ExtensionContext) : ExtensionAPI(context) {
-	
-	private var fileResolver: AssetsFileResolver? = null
+
+    private var fileResolver: AssetsFileResolver? = null
     private var haskellLanguage: HaskellLanguage? = null
     private var cabalLanguage: CabalLanguage? = null
     private var hsRunner: HsRunner? = null
     private var cabalRunner: CabalRunner? = null
-	
+
     override fun onLoad() {
-		loadLanguages()
-		loadRunners()
+        loadLanguages()
+        loadRunners()
     }
 
     override fun onDispose() {
         dispose()
     }
-	
-	// Local functions
-	
-	private fun loadLanguages() {
-		val fileProviderRegistry = FileProviderRegistry.getInstance()
-        fileResolver = AssetsFileResolver(context.assets)
-        fileProviderRegistry.addFileProvider(fileResolver)
+
+    private fun loadLanguages() {
+        val fileProviderRegistry = FileProviderRegistry.getInstance()
+        fileResolver = AssetsFileResolver(context.assets).also {
+            fileProviderRegistry.addFileProvider(it)
+        }
 
         val grammarRegistry = GrammarRegistry.getInstance()
         grammarRegistry.loadGrammars("lang/language.json")
 
-        HaskellLanguage(context.resources).also {
-            haskellLanguage = it
+        haskellLanguage = HaskellLanguage(context.resources).also {
             FileTypeManager.register(it)
         }
 
-        CabalLanguage(context.resources).also {
-            cabalLanguage = it
+        cabalLanguage = CabalLanguage(context.resources).also {
             FileTypeManager.register(it)
         }
-	}
-	
-	private fun loadRunners() {
-		HsRunner().also {
-            hsRunner = it
+    }
+
+    private fun loadRunners() {
+        hsRunner = HsRunner().also {
             RunnerManager.registerRunner(it)
         }
 
-        CabalRunner().also {
-            cabalRunner = it
+        cabalRunner = CabalRunner().also {
             RunnerManager.registerRunner(it)
         }
-	}
-	
-	private fun dispose() {
-        val fileProviderRegistry = FileProviderRegistry.getInstance()
+    }
+
+    private fun dispose() {
         fileResolver?.let {
-            fileProviderRegistry.removeFileProvider(it)
+            FileProviderRegistry.getInstance().removeFileProvider(it)
         }
         hsRunner?.let {
             RunnerManager.unregisterRunner(it)
@@ -77,5 +69,4 @@ class Main(context: ExtensionContext) : ExtensionAPI(context) {
             RunnerManager.unregisterRunner(it)
         }
     }
-
 }

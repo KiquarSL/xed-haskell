@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "io.kiquar.plugin.haskell"
+    namespace = "io.kiquar.pkugin.haskell"
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "io.kiquar.plugin.haskell"
+        applicationId = "io.kiquar.pkugin.haskell"
         minSdk = 26
         targetSdk = 37
         versionCode = 1
@@ -201,8 +201,8 @@ fun registerPackageTask(taskName: String, assembleTaskName: String) {
             Gson().fromJson(text, JsonObject::class.java)
         }
 
-        val extensionName: String by lazy {
-            manifestJson.get("name").asString
+        val extensionId: String by lazy {
+            manifestJson.get("id").asString
         }
 
         val iconFile = File(rootDir, "icon.png")
@@ -222,7 +222,7 @@ fun registerPackageTask(taskName: String, assembleTaskName: String) {
             logger.warn("WARNING: No CHANGELOG.md file found. It is recommended to include one to help users track changes between releases.")
         }
 
-        archiveFileName.set("$extensionName.zip")
+        archiveFileName.set("$extensionId.xed")
 
         from(apkDir) {
             include("**/*.apk")

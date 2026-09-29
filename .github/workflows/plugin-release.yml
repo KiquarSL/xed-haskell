@@ -28,15 +28,15 @@ jobs:
 
       # Make scripts executable
       - name: Make scripts executable
-        run: chmod +x ./gradlew && chmod +x ./compileDebug && chmod +x ./compileRelease
+        run: chmod +x ./gradlew
 
-      # Build (Debug)
+      # Build (Release)
       - name: Compile Release
-        run: ./compileRelease
+        run: ./gradlew buildExtensionRelease
         
       # Upload extension artifacts
       - name: Upload ZIP
         uses: actions/upload-artifact@v4
         with:
           name: extension-build
-          path: output/*.zip
+          path: output/*.xed
