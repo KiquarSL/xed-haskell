@@ -62,9 +62,19 @@ class Main(context: ExtensionContext) : ExtensionAPI(context) {
         fileResolver?.let {
             FileProviderRegistry.getInstance().removeFileProvider(it)
         }
+
+        haskellLanguage?.let {
+            FileTypeManager.unregister(it)
+        }
+
+        cabalLanguage?.let {
+            FileTypeManager.unregister(it)
+        }
+
         hsRunner?.let {
             RunnerManager.unregisterRunner(it)
         }
+
         cabalRunner?.let {
             RunnerManager.unregisterRunner(it)
         }
