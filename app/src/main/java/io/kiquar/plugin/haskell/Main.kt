@@ -37,7 +37,7 @@ class Main(context: ExtensionContext) : ExtensionAPI(context) {
         }
 
         val grammarRegistry = GrammarRegistry.getInstance()
-        grammarRegistry.loadGrammars("lang/language.json")
+        grammarRegistry.loadGrammars("languages.json")
 
         haskellLanguage = HaskellLanguage(context.resources).also {
             FileTypeManager.register(it)
